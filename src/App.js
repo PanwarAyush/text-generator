@@ -5,12 +5,10 @@ import Typewriter from 'typewriter-effect';
 function App() {
   const [textData,setTextData]=useState('') 
   const [generatedTextData,setGeneratedTextData]=useState('')
-  const [done,setDone]=useState(false)
   const onTextChange=(event)=>{
     setTextData(event.target.value)
   }
  const submitTextData=()=>{
-  setDone(false)
     Axios.post(
        "https://api-inference.huggingface.co/models/gpt2",
         {"inputs":textData},{
@@ -20,7 +18,6 @@ function App() {
         //handle success
         console.log(response.data[0].generated_text)
         setGeneratedTextData(response.data[0].generated_text)
-        setDone(true)
       })
       .catch(function (response) {
         //handle error
@@ -49,15 +46,14 @@ const textBox={
   borderTopLeftRadius:'20px',
 }
 const TextGeneratedbox={
-  background:'opaque',
-  opacity:'0.7',
+  background:'black',
+  opacity:'0.9',
   color:'white',
   fontSize:'20px',
   marginLeft:'100px',
   height:'200px',
   width:'1000px',
-  borderRadius:'20px',
-  visibility:done?'visible':'hidden'
+  borderRadius:'20px'
 }
 return (
     <div className="App">
