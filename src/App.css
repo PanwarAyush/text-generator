@@ -1,0 +1,11 @@
+.App {
+  margin-top: 70px;
+  text-align: center;
+  z-index: 3;
+}
+.block{
+  height: 20px;
+}
+.h3{
+  color:white
+}
